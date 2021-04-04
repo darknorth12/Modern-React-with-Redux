@@ -15,3 +15,12 @@ Section 3: Communicating with Props
     props.children 
     reusable components
 
+Section 4 & 5: class based component and state in react component
+
+   create class based component
+   state in class based component
+
+   "State" is a JS object that contains data relevant to a component
+   Updating "state" on a component causes the component to (almost) instantly rerender
+   State must be initialized when a component is created (usually in constructor)
+   State can  only be updated using the function "setState"
