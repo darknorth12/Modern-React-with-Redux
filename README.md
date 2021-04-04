@@ -24,3 +24,23 @@ Section 4 & 5: class based component and state in react component
    Updating "state" on a component causes the component to (almost) instantly rerender
    State must be initialized when a component is created (usually in constructor)
    State can  only be updated using the function "setState"
+
+Section 6: Class component: lifecycle methods
+
+       constructor -> render -> content visible on screen -> componentDidMount (called only once after first render) -> Sit and wait till the component update -> componentDidUpdate -> componentWillUnmount
+
+       constructor => Good place to do one-time setup
+       render => avoid doing anything except returning JSX
+       componentDidMount => Good place to do data-loading
+       componentDidUpdate => Good place to do more data-loading when state/props changes
+       componentWillMount => Good place to do cleanup (especially non-react stuffs)
+
+       other lifecycle methods (rarely used) => shouldComponentUpdate, getDerivedStateFromProps, getSnapshotBeforeUpdate
+
+       Intiazing state outside the constructor is equivalent to intialize state inside the constructor, babel converts the code
+
+       Default Props can declared in the functional component by assigning defaultProps. eg: 
+              const Spinner = (props) => {return <div>{props.message}</div>};
+              Spinner.defaultProps = {message : 'dummyMessage'} 
+
+       Avoid conditionals in Render, use helper functions instead
