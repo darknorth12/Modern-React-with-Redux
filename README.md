@@ -44,3 +44,9 @@ Section 6: Class component: lifecycle methods
               Spinner.defaultProps = {message : 'dummyMessage'} 
 
        Avoid conditionals in Render, use helper functions instead
+
+Sectiion 7, 8 & 9 : Handling user inputs, making api requests, rendering list of elements
+    
+    controlled and uncontrolled form elements
+    Axios
+    
