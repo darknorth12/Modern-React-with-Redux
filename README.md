@@ -49,4 +49,11 @@ Sectiion 7, 8 & 9 : Handling user inputs, making api requests, rendering list of
     
     controlled and uncontrolled form elements
     Axios
+
+Section 10 : React Refs, Dynamic height of image, grid css
+    
+    imageRef = React.createRef() => ref={imageRef} => gives access to a single DOM element.
+    WE create refs in the constructor, assign them to instance variables, then pass to a particular JSX element as props.
+
+
     
