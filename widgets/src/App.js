@@ -3,6 +3,8 @@ import Accordion from "./components/Accordion";
 import Dropdown from "./components/Dropdown";
 import Search from "./components/Search";
 import Translate from "./components/Translate";
+import Route from "./components/Route";
+import Header from "./components/Header";
 
 const items = [
   {
@@ -30,18 +32,29 @@ const App = () => {
 
   return (
     <div className="ui container">
-      {/* <Accordion items={items} /> */}
-      {/* <Search /> */}
-      {/* <Dropdown
-        label="Select a Color"
-        selected={selected}
-        onSelectedChange={setSelected}
-        options={options}
-      />
-      <p style={{ color: selected.value }}>
-        This a {selected.value} coloured text.
-      </p> */}
-      <Translate />
+      <Header />
+      <Route path="/">
+        <Accordion items={items} />
+      </Route>
+      <Route path="/list">
+        <Search />
+      </Route>
+      <Route path="/dropdown">
+        <React.Fragment>
+          <Dropdown
+            label="Select a Color"
+            selected={selected}
+            onSelectedChange={setSelected}
+            options={options}
+          />
+          <p style={{ color: selected.value }}>
+            This a {selected.value} coloured text.
+          </p>
+        </React.Fragment>
+      </Route>
+      <Route path="/translate">
+        <Translate />
+      </Route>
     </div>
   );
 };

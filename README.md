@@ -93,5 +93,23 @@ Section 12: Understanding Hooks in React
                                  }, 500);
                                  return () => clearTimeout(timer);
                                 }, [searchTerm]);
+
+
+Section 13: Navigation
+    
+        window.location.pathname
+        window.history.pushState({},'','/route') => changes only url
+
+        create new event and propagate across =>
+            const navEvent = new PopStateEvent('popstate');
+            window.dispatchEvent(navEvent);
+        
+        listen to new event and remove
+            window.addEventListener("popstate", onLocationChange);
+            window.removeEventListener("popstate", onLocationChange);
+        
+        for default behaviour on pressing click with ctrl key(windows) or cmd key (macOS) =>
+            if (e.metaKey || e.ctrlKey) return;
+    
                         
     
