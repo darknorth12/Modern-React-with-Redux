@@ -111,5 +111,16 @@ Section 13: Navigation
         for default behaviour on pressing click with ctrl key(windows) or cmd key (macOS) =>
             if (e.metaKey || e.ctrlKey) return;
     
-                        
+Section 14: Custom Hooks
+
+        Best way to create reusable code in a React project (besides components)
+        Created by  extracting hook-related code out of a function component
+        custom hooks always make use of at least one primitive hook internally
+        Each custom hook should have one purpose 
+
+        Process of creating Reusable Hooks:
+            Identify each line of code related to some single purpose
+            Identify the inputs to that code
+            Identify The outputs to that code
+            Extract all of the code into a separate function, receiving the inputs as arguments, and returning the outputs
     
