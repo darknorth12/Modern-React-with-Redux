@@ -123,4 +123,27 @@ Section 14: Custom Hooks
             Identify the inputs to that code
             Identify The outputs to that code
             Extract all of the code into a separate function, receiving the inputs as arguments, and returning the outputs
+
+Section 15 : deployment with vercel and Netlify
+
+Section 16 : Introduction to Redux
+        
+        Redux is a state management library
+        makes creating complex applications easier 
+        not explicitly designed to work with React
+
+        Redux cycle => 
+        Action Creator -> Action -> dispatch -> Reducers -> State
+        https://codepen.io/Darknorth12/pen/zYNEemR
+        https://codepen.io/sgrider/pres/oQjBvG
     
+  Section 17 : Intergrating React with Redux
+
+        appliation hierarachy => Provider -> App -> Connect -> SongList
+
+        if file is named index.js then only import the folder webpack will automaticatically take the index file
+
+        songs app => example of using react, redux, and react-redux
+
+
+        
