@@ -137,7 +137,7 @@ Section 16 : Introduction to Redux
         https://codepen.io/Darknorth12/pen/zYNEemR
         https://codepen.io/sgrider/pres/oQjBvG
     
-  Section 17 : Intergrating React with Redux
+  Section 17 : Integrating React with Redux
 
         appliation hierarachy => Provider -> App -> Connect -> SongList
 
@@ -145,5 +145,45 @@ Section 16 : Introduction to Redux
 
         songs app => example of using react, redux, and react-redux
 
-
+  Section 18 : Async actions with redux-thunk; action creators' rules; API requests using redux
         
+        redux-thunk -> middleware to help us make requests in a redux application
+
+        General Data Loading with Redux =>
+          1. Component gets rendered onto the screen
+          2. Component's 'componentDidMount' lifecycle or useEffect method gets called
+          3. we call action creator from 'componentDidMount' or useEffect
+          4. Action creator runs code to make an API request
+          5. API responds with data
+          6. Action creator returns an 'action' with the fetched data on the 'payload' property
+          7. Some reducer sees the action, return the data off the 'payload'
+          8. Because we generated some new state object, redux/react-redux cause the React app to be rerendered
+        
+        General Principles =>
+            Componemts are generally responsible for fetching data they need by calling an action creator (Steps 1-3 from General Data Loading with Redux)
+
+            Action creators ar responsible for makeing API requests (Steps 4-6 from General Data Loading with Redux)
+
+            We get feteched data into a component by generating new state in our redux store, then getting that ino our component through mapStateToProps Steps 7-8 from General Data Loading with Redux)
+        
+        Error: Actions must be plain objects. Use custom middleware for async actions. (due to async await)
+        Reason: 1. Action creators must return plain JS objects with a type property.
+                2. By the time our action gets to a reducer, we won't have fetched our data.    
+
+        redux cycle with async action creator => 
+            Action Creator -(Produces an)-> Action -(Gets fed to)-> dispatch -(forwards action to)-> Middleware -(sends action to)-> Reducers -(creates new)-> State  
+
+        Middleware in redux =>
+            function that gets called with every action we dispatch
+            has ability to stop, modify or make changes to actions
+            tons of open source middleware exist
+
+        Normal Rules =>
+            1. Action creators must return action objects.
+            2. Actions must have a 'type' property
+            3. Actions can optionally have a 'payload'
+        
+        Rules with Redux Thunk =>
+            1. Action creators can return action objects or functions
+            2. If an action gets returned, then it must have a 'type' property
+            3. If an action gets returned, then it can optionally have a 'payload'
