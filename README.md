@@ -137,7 +137,7 @@ Section 16 : Introduction to Redux
         https://codepen.io/Darknorth12/pen/zYNEemR
         https://codepen.io/sgrider/pres/oQjBvG
     
-  Section 17 : Integrating React with Redux
+Section 17 : Integrating React with Redux
 
         appliation hierarachy => Provider -> App -> Connect -> SongList
 
@@ -145,7 +145,7 @@ Section 16 : Introduction to Redux
 
         songs app => example of using react, redux, and react-redux
 
-  Section 18 : Async actions with redux-thunk; action creators' rules; API requests using redux
+Section 18 : Async actions with redux-thunk; action creators' rules; API requests using redux
         
         redux-thunk -> middleware to help us make requests in a redux application
 
@@ -187,3 +187,37 @@ Section 16 : Introduction to Redux
             1. Action creators can return action objects or functions
             2. If an action gets returned, then it must have a 'type' property
             3. If an action gets returned, then it can optionally have a 'payload'
+    
+Section 19: Redux Store Design
+
+    Rules of Reducers:
+        Must return any value except 'undefined'
+        produces 'state' or data to be used inside of the app using only previous state and the action (reducers are pure function)
+        Must not return reach 'out of itself' to decide what value to return
+        Must not mutate its input 'state' argument  
+
+    lodash =>    
+    _.omit()
+    _.memoize()
+
+    export const fetchPostsAndUsers = () => async (dispatch, getState) => {
+        await dispatch(fetchPosts());
+        const userIds = _.uniq(_.map(getState().posts, "userId"));
+        userIds.forEach((id) => dispatch(fetchUser(id)));
+    };
+
+     _.chain(getState().posts)
+    .map("userId")
+    .uniq()
+    .forEach((id) => dispatch(fetchUser(id)))
+    .value();
+
+    /* Memoization approach */
+    export const fetchUser = (id) => (dispatch) => {
+      _fetchUser(id, dispatch);
+    };
+    
+    const _fetchUser = _.memoize(async (id, dispatch) => {
+      const response = await jsonPlaceholder.get(`/users/${id}`);
+      dispatch({ type: "FETCH_USER", payload: response.data });
+    });
