@@ -221,3 +221,41 @@ Section 19: Redux Store Design
       const response = await jsonPlaceholder.get(`/users/${id}`);
       dispatch({ type: "FETCH_USER", payload: response.data });
     });
+
+Section 20: Navigation using React-router
+
+    npm i --save react-router-dom
+
+    import { BrowserRouter, Route, Link } from "react-router-dom";
+
+    const PageOne = () => {
+      return (
+        <div>
+          PageOne <Link to="/pagetwo">navigate to page two</Link>
+        </div>
+      );
+    };
+    const PageTwo = () => {
+      return (
+        <div>
+          PageTwo<Link to="/">navigate to page one</Link>
+        </div>
+      );
+    };
+    
+    const App = () => {
+      return (
+        <div>
+          <BrowserRouter>
+            <Route path="/" exact component={PageOne} />
+            <Route path="/pagetwo" component={PageTwo} />
+          </BrowserRouter>
+        </div>
+      );
+    };
+
+
+    other types of router HashRouter, MemoryRouter
+
+
+
