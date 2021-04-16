@@ -268,5 +268,12 @@ Section 22: Redux-Dev-Tools
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     const store=createStore(reducers,composeEnhancers(applyMiddleware()))
 
+    http://localhost:3000/?debug_session=<any_string>=> to retain redux devtool steps on reloading the page as well. You can create separate sessions as well by giving different string value.
+
+Section 23: Redux-form
+    
+    npm install redux-form --legacy-peer-deps
+    https://redux-form.com/8.3.0/examples/simple/
+
     
 
