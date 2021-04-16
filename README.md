@@ -257,5 +257,10 @@ Section 20: Navigation using React-router
 
     other types of router HashRouter, MemoryRouter
 
+Section 21: Handling Authentication with React
 
+    <script src="https://apis.google.com/js/api.js"></script>
+
+Section 22: Redux-Dev-Tools
+    
 
