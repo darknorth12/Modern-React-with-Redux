@@ -262,5 +262,11 @@ Section 21: Handling Authentication with React
     <script src="https://apis.google.com/js/api.js"></script>
 
 Section 22: Redux-Dev-Tools
+
+    import { createStore, applyMiddleware, compose } from "redux";
+    
+    const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+    const store=createStore(reducers,composeEnhancers(applyMiddleware()))
+
     
 
