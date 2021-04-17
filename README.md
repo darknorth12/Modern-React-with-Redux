@@ -81,42 +81,41 @@ Section 12: Understanding Hooks in React
 
         3. When the component is rendered for the first time and (after every rerenders if data has changed since last render).
            useEffect(() => {}, [data]);
-    
+
     <span dangerouslySetInnerHTML={{ __html: result.snippet }}></span> : XSS Attack
 
     166 lecture => important => useEffect's Cleanup Function
 
-**Important**    debouncing using useEffect in React =>
-                        useEffect(() => {
-                                 const timer = setTimeout(() => {
-                                 if (searchTerm) getSearchResults();
-                                 }, 500);
-                                 return () => clearTimeout(timer);
-                                }, [searchTerm]);
-
+**Important** debouncing using useEffect in React =>
+useEffect(() => {
+const timer = setTimeout(() => {
+if (searchTerm) getSearchResults();
+}, 500);
+return () => clearTimeout(timer);
+}, [searchTerm]);
 
 Section 13: Navigation
-    
+
         window.location.pathname
         window.history.pushState({},'','/route') => changes only url
 
         create new event and propagate across =>
             const navEvent = new PopStateEvent('popstate');
             window.dispatchEvent(navEvent);
-        
+
         listen to new event and remove
             window.addEventListener("popstate", onLocationChange);
             window.removeEventListener("popstate", onLocationChange);
-        
+
         for default behaviour on pressing click with ctrl key(windows) or cmd key (macOS) =>
             if (e.metaKey || e.ctrlKey) return;
-    
+
 Section 14: Custom Hooks
 
         Best way to create reusable code in a React project (besides components)
         Created by  extracting hook-related code out of a function component
         custom hooks always make use of at least one primitive hook internally
-        Each custom hook should have one purpose 
+        Each custom hook should have one purpose
 
         Process of creating Reusable Hooks:
             Identify each line of code related to some single purpose
@@ -127,16 +126,16 @@ Section 14: Custom Hooks
 Section 15 : deployment with vercel and Netlify
 
 Section 16 : Introduction to Redux
-        
+
         Redux is a state management library
-        makes creating complex applications easier 
+        makes creating complex applications easier
         not explicitly designed to work with React
 
-        Redux cycle => 
+        Redux cycle =>
         Action Creator -> Action -> dispatch -> Reducers -> State
         https://codepen.io/Darknorth12/pen/zYNEemR
         https://codepen.io/sgrider/pres/oQjBvG
-    
+
 Section 17 : Integrating React with Redux
 
         appliation hierarachy => Provider -> App -> Connect -> SongList
@@ -146,7 +145,7 @@ Section 17 : Integrating React with Redux
         songs app => example of using react, redux, and react-redux
 
 Section 18 : Async actions with redux-thunk; action creators' rules; API requests using redux
-        
+
         redux-thunk -> middleware to help us make requests in a redux application
 
         General Data Loading with Redux =>
@@ -158,20 +157,20 @@ Section 18 : Async actions with redux-thunk; action creators' rules; API request
           6. Action creator returns an 'action' with the fetched data on the 'payload' property
           7. Some reducer sees the action, return the data off the 'payload'
           8. Because we generated some new state object, redux/react-redux cause the React app to be rerendered
-        
+
         General Principles =>
             Componemts are generally responsible for fetching data they need by calling an action creator (Steps 1-3 from General Data Loading with Redux)
 
             Action creators ar responsible for makeing API requests (Steps 4-6 from General Data Loading with Redux)
 
             We get feteched data into a component by generating new state in our redux store, then getting that ino our component through mapStateToProps Steps 7-8 from General Data Loading with Redux)
-        
+
         Error: Actions must be plain objects. Use custom middleware for async actions. (due to async await)
         Reason: 1. Action creators must return plain JS objects with a type property.
-                2. By the time our action gets to a reducer, we won't have fetched our data.    
+                2. By the time our action gets to a reducer, we won't have fetched our data.
 
-        redux cycle with async action creator => 
-            Action Creator -(Produces an)-> Action -(Gets fed to)-> dispatch -(forwards action to)-> Middleware -(sends action to)-> Reducers -(creates new)-> State  
+        redux cycle with async action creator =>
+            Action Creator -(Produces an)-> Action -(Gets fed to)-> dispatch -(forwards action to)-> Middleware -(sends action to)-> Reducers -(creates new)-> State
 
         Middleware in redux =>
             function that gets called with every action we dispatch
@@ -182,21 +181,21 @@ Section 18 : Async actions with redux-thunk; action creators' rules; API request
             1. Action creators must return action objects.
             2. Actions must have a 'type' property
             3. Actions can optionally have a 'payload'
-        
+
         Rules with Redux Thunk =>
             1. Action creators can return action objects or functions
             2. If an action gets returned, then it must have a 'type' property
             3. If an action gets returned, then it can optionally have a 'payload'
-    
+
 Section 19: Redux Store Design
 
     Rules of Reducers:
         Must return any value except 'undefined'
         produces 'state' or data to be used inside of the app using only previous state and the action (reducers are pure function)
         Must not return reach 'out of itself' to decide what value to return
-        Must not mutate its input 'state' argument  
+        Must not mutate its input 'state' argument
 
-    lodash =>    
+    lodash =>
     _.omit()
     _.memoize()
 
@@ -216,7 +215,7 @@ Section 19: Redux Store Design
     export const fetchUser = (id) => (dispatch) => {
       _fetchUser(id, dispatch);
     };
-    
+
     const _fetchUser = _.memoize(async (id, dispatch) => {
       const response = await jsonPlaceholder.get(`/users/${id}`);
       dispatch({ type: "FETCH_USER", payload: response.data });
@@ -242,7 +241,7 @@ Section 20: Navigation using React-router
         </div>
       );
     };
-    
+
     const App = () => {
       return (
         <div>
@@ -264,14 +263,14 @@ Section 21: Handling Authentication with React
 Section 22: Redux-Dev-Tools
 
     import { createStore, applyMiddleware, compose } from "redux";
-    
+
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
     const store=createStore(reducers,composeEnhancers(applyMiddleware()))
 
     http://localhost:3000/?debug_session=<any_string>=> to retain redux devtool steps on reloading the page as well. You can create separate sessions as well by giving different string value.
 
 Section 23: Redux-form
-    
+
     npm install redux-form --legacy-peer-deps
     https://redux-form.com/8.3.0/examples/simple/
 
@@ -279,21 +278,25 @@ Section 24: Rest-based React apps, programatic navigation, api creation using js
 
     JSON-server => simple rest server library
     api/package.json => "server": "json-server -p 3001 -w db.json" to run the server
-    
+
     programmatic navigation from non-component
         history.js => import { createBrowserHistory } from "history";
                       export default createBrowserHistory();
-        
+
         App.js => import history from 'history.js'
                   <Router history={history}>
-        
+
         non-component js file => import history from 'history.js'
                                  history.push("/path")
 
         PUT request: update all properties of a record
         PATCH request: update some properties of a record
-        
 
+Section 25 : React Portals
 
-    
+    There is a issue in creating modal with react.
 
+    **important** stacking context (css)
+         one way to create a stacking context is give {position:relative, z-index:0} to parent element of modal.
+
+    Portal make the component direct child of body element or any other element.
