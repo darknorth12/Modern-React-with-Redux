@@ -306,3 +306,49 @@ Section 25 : React Portals
 Section 26: Implementing Streaming video using node-media-server
 
     https://github.com/illuspas/Node-Media-Server
+
+    OBS : Open Broadcaster Software
+
+Section 27: The Context System with React
+
+    Context System: gets data from a parent component to any nested child component
+
+    two ways =>   
+    1.source of data => {default value or Parent Component [Provider]}
+           <LanguageContext.Provider value={this.state.language}>
+                   <UserCreate />
+           </LanguageContext.Provider>
+                      
+                     2. context Object => {data}
+                            import React from "react";
+                            export default React.createContext("english");
+        
+       3. Thing that uses data => {Nested Child [this.context or Consumer]}
+                    class Button extends React.Component {
+                           static contextType = LanguageContext; **contextType should be var name**
+                           console.log(this.context)
+
+                           or
+                    <button className="ui primary button">
+                             <LanguageContext.Consumer>
+                                  {(value) => (value === "english" ? "Submit" : "Voorleggen")}
+                             </LanguageContext.Consumer>
+                    </button>
+      
+      this.context approach can used only in case of single Provider. In case of multiple Providers we have you Consumer approach.
+
+       <LanguageContext.Provider value={this.state.language}>
+          <ColorContext.Provider value={"red"}>
+            <UserCreate />
+          </ColorContext.Provider>
+        </LanguageContext.Provider>
+
+      <ColorContext.Consumer>
+        {(value) => (
+          <button className={`ui ${value || "primary"} button`}>
+            <LanguageContext.Consumer>
+              {(value) => this.renderSubmit(value)}
+            </LanguageContext.Consumer>
+          </button>
+        )}
+      </ColorContext.Consumer>
