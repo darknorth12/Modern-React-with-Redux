@@ -1,0 +1,44 @@
+{
+  "streams": [
+    {
+      "title": "h",
+      "description": "g",
+      "id": 1
+    },
+    {
+      "title": "new Title",
+      "description": "There",
+      "userId": null,
+      "id": 2
+    },
+    {
+      "title": "new Title 2",
+      "description": "test 2",
+      "userId": "115615661587046711969",
+      "id": 3
+    },
+    {
+      "title": "ffsfs",
+      "description": "v",
+      "userId": "115615661587046711969",
+      "id": 4
+    },
+    {
+      "title": "new stream",
+      "description": "testing programmatic navigation changes  3",
+      "id": 5
+    },
+    {
+      "title": "n12",
+      "description": "d12",
+      "userId": "115615661587046711969",
+      "id": 6
+    },
+    {
+      "title": "r2",
+      "description": "r2",
+      "userId": "115615661587046711969",
+      "id": 7
+    }
+  ]
+}

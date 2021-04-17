@@ -275,5 +275,25 @@ Section 23: Redux-form
     npm install redux-form --legacy-peer-deps
     https://redux-form.com/8.3.0/examples/simple/
 
+Section 24: Rest-based React apps, programatic navigation, api creation using json-server
+
+    JSON-server => simple rest server library
+    api/package.json => "server": "json-server -p 3001 -w db.json" to run the server
+    
+    programmatic navigation from non-component
+        history.js => import { createBrowserHistory } from "history";
+                      export default createBrowserHistory();
+        
+        App.js => import history from 'history.js'
+                  <Router history={history}>
+        
+        non-component js file => import history from 'history.js'
+                                 history.push("/path")
+
+        PUT request: update all properties of a record
+        PATCH request: update some properties of a record
+        
+
+
     
 
