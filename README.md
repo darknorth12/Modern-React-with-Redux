@@ -300,3 +300,9 @@ Section 25 : React Portals
          one way to create a stacking context is give {position:relative, z-index:0} to parent element of modal.
 
     Portal make the component direct child of body element or any other element.
+
+    eg => ReactDOM.createPortal(<Component />, document.querySelector("#modal))
+
+Section 26: Implementing Streaming video using node-media-server
+
+    https://github.com/illuspas/Node-Media-Server
